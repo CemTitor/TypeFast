@@ -50,7 +50,7 @@ class _MyAppHomeState extends State<MyAppHome> {
       // GAME OVER
       setState(() {
         if (step == 1 && now - lastTypedAt > 4000) {
-          timer.cancel();
+          // timer.cancel();
           step++;
         }
         if (step != 1) {
@@ -65,7 +65,7 @@ class _MyAppHomeState extends State<MyAppHome> {
     String trimmedValue = lorem.trimLeft();
     setState(() {
       if (trimmedValue.indexOf(value) != 0) {
-        step == 2;
+        step = 2;
       } else {
         typedCharLength = value.length;
       }
@@ -151,7 +151,7 @@ class _MyAppHomeState extends State<MyAppHome> {
           ),
         ),
       ];
-    } else {
+    } else if (step == 2) {
       shownWidget = <Widget>[
         Text('Game over! . Your score is : $typedCharLength'),
         ElevatedButton(
