@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+cem/type_fast/BuildConfig.java
+ cem.type_fast.BuildConfig
