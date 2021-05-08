@@ -96,7 +96,23 @@ class _MyAppHomeState extends State<MyAppHome> {
 
     if (step == 0) {
       shownWidget = <Widget>[
-        Text('Welcome to the type fast.'),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 20,
+            left: 30,
+            right: 30,
+          ),
+          child: Image(
+            image: AssetImage('images/type.jpeg'),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Text(
+            'Welcome to the type fast. Your nickname must be at least 5 letters.',
+            textAlign: TextAlign.center,
+          ),
+        ),
         Container(
           padding: EdgeInsets.all(20),
           child: TextField(
@@ -104,7 +120,7 @@ class _MyAppHomeState extends State<MyAppHome> {
             onChanged: onUserNameType,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: 'Whats your name. ',
+              labelText: 'Whats your nickname. ',
             ),
           ),
         ),
@@ -120,7 +136,7 @@ class _MyAppHomeState extends State<MyAppHome> {
       ];
     } else if (step == 1) {
       shownWidget = <Widget>[
-        Text('$typedCharLength'),
+        Text('$typedCharLength Point'),
         Container(
           height: 40,
           child: Marquee(
@@ -133,11 +149,11 @@ class _MyAppHomeState extends State<MyAppHome> {
             ),
             scrollAxis: Axis.horizontal,
             crossAxisAlignment: CrossAxisAlignment.start,
-            blankSpace: 20.0,
-            velocity: 70,
+            blankSpace: 0.0,
+            velocity: 80,
             startPadding: 100,
-            accelerationDuration: Duration(seconds: 10),
-            accelerationCurve: Curves.ease,
+            accelerationDuration: Duration(seconds: 1),
+            accelerationCurve: Curves.linear,
           ),
         ),
         Padding(
@@ -155,24 +171,36 @@ class _MyAppHomeState extends State<MyAppHome> {
             ),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child:
+              Text('If your keyboard has autocorrect, you may get an error.'),
+        )
       ];
     } else if (step == 2) {
       shownWidget = <Widget>[
-        Text('Game over! . Your score is : $typedCharLength'),
+        Text(
+          'Game over !\nYour score is : $typedCharLength',
+          style: TextStyle(
+            fontSize: 30,
+          ),
+        ),
         ElevatedButton(
-          child: Text('Try again!'),
+          child: Text('Try again !'),
           onPressed: resetGame,
         )
       ];
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Type Fast'),
+        title: Center(child: Text('Type Fast')),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: shownWidget,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: shownWidget,
+          ),
         ),
       ),
     );
