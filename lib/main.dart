@@ -86,6 +86,7 @@ class _MyAppHomeState extends State<MyAppHome> {
   void resetGame() {
     setState(() {
       typedCharLength = 0;
+      onStartClick();
       step = 1;
     });
   }
